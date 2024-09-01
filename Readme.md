@@ -103,5 +103,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 - Author: Priyansh
-- Email: [your-email@example.com](mailto:your-email@example.com)
-- GitHub: [https://github.com/your-username](https://github.com/your-username)
+- Email: [your-email@example.com](mailto:priyansh56701@gmail.com)
+- GitHub: [https://github.com/your-username](https://github.com/priyansh87)
