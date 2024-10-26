@@ -19,7 +19,7 @@ const videoSchema = Schema(
             required : [true , "description should be provided ! "]
         }, 
         duration : {
-            type : Number , 
+            type : Number , // from cloudinary
             required : true ,
         },
         views : {
@@ -31,7 +31,7 @@ const videoSchema = Schema(
             default : true , 
         }, 
         owner : {
-            type : Schema.Types.ObjectId,
+            type : mongoose.Schema.Types.ObjectId ,
             ref : "User"
         }
 
@@ -40,6 +40,6 @@ const videoSchema = Schema(
 , {timestamps : true }
 )
 
-videoSchema.plugin( mongooseAggregatePaginate )
+videoSchema.plugin( mongooseAggregatePaginate ) // to write aggregation queries 
 
 export const Video = mongoose.model( "Video" , videoSchema) ;
