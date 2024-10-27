@@ -29,7 +29,7 @@ const registerUser = asyncHandler( async ( req , res ) => {
         throw new ApiError(400 , "All fields are required !!! ") ; 
     }
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{ userName } , { email }]
     })
     if(existedUser) {
@@ -37,7 +37,11 @@ const registerUser = asyncHandler( async ( req , res ) => {
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path ; 
-    const converImageLocalPath = req.files?.coverImage[0]?.path  ;
+    // const converImageLocalPath = req.files?.coverImage[0]?.path  ;
+    let converImageLocalPath ;
+    if( req.files && req.files?.coverImage?.length > 0){
+        converImageLocalPath = req.files?.coverImage[0]?.path ; 
+    }  // if cover image is not provided , it will remain null
 
     if( !avatarLocalPath ){
         throw new ApiError(400 , "Avatar file is required ") ; 
@@ -54,7 +58,7 @@ const registerUser = asyncHandler( async ( req , res ) => {
         avatar : avatar.url ,
         coverImage : coverImage?.url || "" ,
         email ,
-        userName : userNAme.toLowerCase(),
+        userName : userName.toLowerCase(),
         password
     })
 
