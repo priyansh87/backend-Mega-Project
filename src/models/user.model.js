@@ -46,7 +46,7 @@ userSchema.methods.isPasswordCorrect = async function ( password ){
 
 // jwt is a bearer token -> jiske pas hoga usse info send krdenge 
 userSchema.methods.generateAccessToken = function (){
-    jwt.sign(
+    return jwt.sign(
         {   // payload_key: database_field
             _id: this._id,
             email: this.email , 
@@ -60,7 +60,7 @@ userSchema.methods.generateAccessToken = function (){
     )
 }
 userSchema.methods.generateRefreshToken = function (){
-    jwt.sign(
+    return jwt.sign(
         {   // payload_key: database_field
             _id: this._id,
             
